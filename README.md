@@ -1,6 +1,7 @@
 # Cloud Resource Management
-> This is for educational purpose only
-
+> This is for educational purpose only.
+> This project is for an internship at MAKAUT university.
+ 
 ## Introduction
 Cloud computing is a technology that provides Information Technology as a service to its users. The clients/users can access the services from cloud environment through the internet and remote servers. Due to scarcity and large cost of cloud resources there is need for proper scheduling and allocation of cloud resources. The cloud resources must be allocated in efficient and effective way so that total cost of resources should be minimized. The cloud resources must be utilized in energy efficient methods. Scheduling algorithms are used for dispatching user tasks or jobs to a particular resource or data. [[1]](#1)
 
@@ -115,6 +116,12 @@ $ node index.js
 [SERVER] {"id":"l0","jobs":30,"process":[]}
 
 ```
+
+## Contributors
+
+- Mr. Jayanta Dutta ( Mentor )
+- Raya Paul ( Team Member )
+- Sheikh Tabish ( Team Member )
 
 ## References
 <a id="1">[1][2][3][4][5]</a>
