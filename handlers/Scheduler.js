@@ -7,12 +7,13 @@ let waitingProcesses = [];
 
 requestResource = (req) => {
     const priority = req.time < 1000 ? "HIGH" : req.time < 5000 ? "MODERATE" : "LOW";
-    const processID = activeProcesses.length;
+    const processID = "PRO" + req.clientID;
     let obj;
     let response;
     response = Allocate(priority, processID, req.jobs);
 
     if (!response.success) {
+        console.log(`[SCHEDULER] Process not allocated for ${req.clientID} waiting`);
         waitingProcesses.push(req);
         return { "success": false }
     }
@@ -24,16 +25,23 @@ requestResource = (req) => {
         jobs: req.jobs,
         server: response.server
     }
-    active.push(obj);
+    activeProcesses.push(obj);
     deleteResource(obj, req.time);
-    return { "success": true, "processID": processNo }
+    return { "success": true, "processID": processID }
 }
 
-deleteResource = async (process, time) => {
-    setTimeout(() => {
+deleteResource = (process, time) => {
+    setTimeout(async () => {
         await Deallocate(process);
         activeProcesses.splice(process.processID, 1);
-        activeProcesses = await Migration(activeProcesses);
-        requestResource(waitingProcesses.pop())
+        activeProcesses = await Migration(process.priority, activeProcesses);
+        if (waitingProcesses.length) {
+            console.log(`[SCHEDULER] Trying again with waiting process`);
+            requestResource(waitingProcesses.shift())
+        }
     }, time);
+}
+
+module.exports = {
+    "requestResource": requestResource
 }

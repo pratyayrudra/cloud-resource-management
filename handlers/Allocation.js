@@ -1,12 +1,14 @@
 let SERVER = require('../resources/SERVER');
 
 module.exports = (priority, processID, jobs) => {
-    SERVER[priority].forEach(server => {
-        if (server.jobs > jobs) {
-            server.process.push(processID);
-            server.jobs -= jobs;
-            return { "success": true, "server": `l${SERVER.HIGH.indexOf(server)}` };
+    for (let index = 0; index < SERVER[priority].length; index++) {
+        if (SERVER[priority][index].jobs >= jobs) {
+            SERVER[priority][index].process.push(processID);
+            SERVER[priority][index].jobs -= jobs;
+            console.log(`[ALLOCATION] Process ${processID} of ${priority} priority allocated to ${SERVER[priority][index].id}`);
+            console.log(`[SERVER] ${JSON.stringify(SERVER[priority][index])}`);
+            return { "success": true, "server": SERVER[priority][index].id };
         }
-    })
+    }
     return { "success": false };
 }

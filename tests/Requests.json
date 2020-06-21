@@ -1,0 +1,51 @@
+[{
+        "clientID": "001",
+        "jobs": 80,
+        "time": 700
+    },
+    {
+        "clientID": "002",
+        "jobs": 40,
+        "time": 500
+    },
+    {
+        "clientID": "003",
+        "jobs": 70,
+        "time": 2200
+    },
+    {
+        "clientID": "004",
+        "jobs": 40,
+        "time": 1800
+    },
+    {
+        "clientID": "005",
+        "jobs": 10,
+        "time": 950
+    },
+    {
+        "clientID": "006",
+        "jobs": 20,
+        "time": 4000
+    },
+    {
+        "clientID": "007",
+        "jobs": 5,
+        "time": 7000
+    },
+    {
+        "clientID": "008",
+        "jobs": 50,
+        "time": 4800
+    },
+    {
+        "clientID": "009",
+        "jobs": 20,
+        "time": 11800
+    },
+    {
+        "clientID": "010",
+        "jobs": 30,
+        "time": 8800
+    }
+]
